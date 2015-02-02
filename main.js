@@ -1,17 +1,17 @@
-var input = $('input'),
-    ul    = document.querySelector('ul'),
+var $input = $('input'),
+    $ul    =$('ul'),
     url   = 'https://yspuku7qvh9u4cr3.firebaseio.com/.json';
 
-input.change(getUpdateAndSplit);
+$input.change(getUpdateAndSplit);
 document.addEventListener('DOMContentLoaded', getUpdateAndSplit);
 
 function getUpdateAndSplit(){
-  var count = input.value;
+  var count = $input.value;
   
-  ul.innerHTML = '';
+  $ul.empty();
   getJSON(url, function(res){
     var chunkedStudents = chunkData(res['c8-students'], count);
-    ul.appendChild(createList(chunkedStudents));
+    $ul.appendChild(createList(chunkedStudents));
   });
 };
 
